@@ -2,20 +2,23 @@ import React, {useState} from 'react'
 
 export default function TextForm(props) {
     const handleUpClick=()=>{
-        console.log("upercase was clicked"+text);
+       // console.log("upercase was clicked"+text);
         let newText=text.toUpperCase();
         setText(newText);
+        props.showAlert("converted to uppercase","success");
        // setText("You have clicked on handleUpclick");
     }
     const handleLowClick=()=>{
         console.log("Lower case was clicked");
         let newText=text.toLowerCase();
         setText(newText);
+        props.showAlert("converted to lowercase","success");
     }
     const handleClearClick=()=>{
       console.log("text was clear");
       let newText=" ";
       setText(newText);
+      props.showAlert("text cleared","success");
   }
     const handleOnChange=(event)=>{
       console.log("on change");
@@ -28,6 +31,7 @@ export default function TextForm(props) {
     var text=document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("copied to clipboard","success");
   }
 
   //Credit : coding wallah
@@ -35,6 +39,7 @@ export default function TextForm(props) {
   const handleExtraSpaces=()=>{
     let newText=text.split(/[ ]+/);
     setText(newText.join(" "))
+    props.showAlert("removed extra spaces","success");
   }
     const [text, setText]= useState('Enter text here');
     //text="new text";//wrong way to change the state
