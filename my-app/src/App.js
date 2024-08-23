@@ -4,7 +4,8 @@ import Navbar from './component/Navbar';
  import TextForm from './component/TextForm';
  import React ,{useState} from 'react';
  import Alert from './component/Alert';
-//import About from './component/About';
+
+
 function App() {
   const[mode,setMode]=useState('light'); //whether dark mode is enable or not
   const[alert ,setAlert]=useState(null);
@@ -12,7 +13,7 @@ function App() {
       setAlert({
         msg:message,
         type:type
-      })
+      });
       setTimeout(()=>{
         setAlert(null);
       },1500);
@@ -36,9 +37,9 @@ function App() {
         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
         <Alert alert={alert}/>
         <div className="container my-3">
-          <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/> 
-         {/*<About/> */}
+          <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>
         </div>
+        
     </>
    );
 }
